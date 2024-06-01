@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petit Loulou</title>
+    <!-- Seu código CSS e links para o FontAwesome aqui -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Importa os ícones do FontAwesome -->
+    <style>
+           .container {
+            text-align: center; /* Centraliza texto */
+            background-color: #fff; /* Cor de fundo branca */
+            padding: 20px; /* Espaçamento interno */
+            border-radius: 10px; /* Bordas arredondadas */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ao redor do container */
+        }
+           .btn {
+            display: inline-block; /* Exibição em bloco inline */
+            padding: 10px 20px; /* Espaçamento interno do botão */
+            font-size: 16px; /* Tamanho da fonte */
+            color: #fff; /* Cor do texto */
+            background-color: #5b2e35; /* Cor de fundo do botão */ 
+            border: none; /* Remove borda */
+            border-radius: 5px; /* Bordas arredondadas */
+            text-decoration: none; /* Remove sublinhado */
+            cursor: pointer; /* Cursor de ponteiro ao passar sobre o botão */
+            transition: background-color 0.3s ease; /* Transição suave para mudança de cor */
+        }
+           .btn:hover {
+            background-color: #000000; /* Cor de fundo ao passar o mouse */
+        }
+        /* Estilos globais */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #253c46; /* Fundo em tom pastel */
+            margin: 0;
+            padding: 0;
+        }
+        /* Estilos para as imagens das sócias em círculos */
+        .socia img {
+         width: 100%;
+         border-radius: 50%; /* Isso faz com que a imagem seja exibida em forma de círculo */
+         overflow: hidden; /* Garante que a imagem não ultrapasse os limites do círculo */
+        }
+
+
+        /* Estilos para o cabeçalho */
+        header {
+            background-color: #eff1ec; /* Rosa pastel */
+            color: #4d4d4d; /* Cinza escuro para o texto */
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos do texto do cabeçalho */
+        header h1 {
+            margin-bottom: 20px;
+            font-family: 'Pacifico', cursive;
+            font-size: 64px; /* Tamanho aumentado */
+            color: #5b2e35; /* Cinza escuro para o texto */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            transition: color 0.3s ease; /* Transição suave para mudança de cor */
+        }
+
+        /* Estilos para as imagens aleatórias */
+        #imagemAleatoriaContainer {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .imagemAleatoria {
+            max-width: 20%; /* Define a largura máxima de cada imagem */
+            border-radius: 10px;
+            transition: transform 0.3s; /* Transição suave ao passar o mouse */
+            margin: 0 10px;
+        }
+
+        .imagemAleatoria:hover {
+            transform: scale(1.1); /* Aumenta ligeiramente a escala ao passar o mouse */
+        }
+
+        /* Estilos do menu de navegação */
+        nav {
+            background-color: #5b2e35; /* Rosa pastel */
+            padding: 10px 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos dos links do menu de navegação */
+        nav a {
+            color: #FFFFFF; /* Cinza escuro para o texto */
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s; /* Transições suaves */
+        }
+
+        /* Estilos dos links ativos ou selecionados */
+        nav a:active, nav a:focus {
+            color: #5b2e35; /* Altere para a cor desejada */
+            font-weight: bold; /* Para enfatizar o link ativo */
+        }
+
+        /* Estilos das seções */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        section h2 {
+            color: #4d4d4d; /* Cinza escuro para o texto */
+            text-align: center;
+        }
+
+        /* Estilos dos ícones das redes sociais */
+        .social-icon {
+            font-size: 24px;
+            color: #fff; /* Alterado para branco */
+            margin: 0 10px;
+            transition: color 0.3s ease; /* Transição suave para mudança de cor */
+        }
+
+        /* Estilos dos ícones das redes sociais ao passar o mouse */
+        .social-icon:hover {
+            color: #5b2e35; /* Vermelho mais vivo */
+        }
+
+        /* Estilos para o produto */
+        .product {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .product img {
+            width: 200px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .product p {
+            margin-bottom: 10px;
+        }
+
+        .product input[type="text"],
+        .product input[type="number"] {
+            width: 200px;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .product button {
+            padding: 10px 20px;
+            background-color: #ff97a1;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .product button:hover {
+            background-color: #ff6d7a;
+        }
+
+        /* Estilos do rodapé */
+        footer {
+            background-color: #4d4d4d;
+            color: #fff;
+            text-align: center;
+            padding: 0; /* Removendo o padding */
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            min-height: 5px; /* Definindo uma altura mínima */
+            transition: bottom 0.3s; /* Adicionando transição para suavizar o efeito */
+        }
+
+        /* Classe para esconder o rodapé */
+        .hide-footer {
+            bottom: -50px; /* Define a posição do rodapé quando estiver escondido */
+        }
+
+        /* Estilos para missão, visão e valores */
+        .mission-vision-values {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 40px;
+        }
+
+        .rectangle {
+            width: 30%;
+            background-color: #5b2e35; /* Rosa pastel */
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .rectangle i {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        /* Estilos para as imagens das sócias */
+        .socia-images {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .socia {
+            width: 30%;
+            margin-bottom: 20px;
+        }
+
+        .socia img {
+            width: 50%;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .socia p {
+            margin-top: 10px;
+        }
+        /* Estilos para as imagem História */
+            #historia {
+            border-radius: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        #sustentaveis {
+            display: flex;
+            align-items: center;
+        }
+
+        #sustentaveis img {
+            border-radius: 50%; /* Torna a imagem circular */
+            overflow: hidden; /* Garante que a imagem não ultrapasse os limites do contêiner */
+            width: 300px; /* Largura da imagem */
+            margin-right: 40px; /* Espaço entre a imagem e o texto */
+        }
+
+        #sustentaveis p {
+            font-family: 'Trebuchet MS', Helvetica, sans-serif;
+        }
+           .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+           .gallery img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+           .gallery img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+           .gallery img:active {
+            transform: scale(1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+           .seu-container {
+            display: flex;
+            align-items: center;
+        }
+
+           .text {
+            margin-left: 20px;
+        }
+           .gallery1 {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+          .gallery1 img {
+           width: 400px; /* Defina a largura desejada */
+           height: auto; /* Mantém a proporção da imagem */
+           border-radius: 10px;
+           transition: transform 0.3s ease; /* Adiciona uma transição de 0.3 segundos na propriedade transform */
+        }
+          .gallery1 img:hover {
+          transform: scale(1.1); /* Aumenta a escala da imagem em 10% ao passar o mouse sobre ela */
+        }
+       
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i class="fa-sharp fa-solid fa-beer-mug"></i>Petit Loulou <span style="font-size: 5px;"></span></h1>
+    </header>
+    
+    <section id="imagemAleatoriaContainer">
+        <img class="imagemAleatoria" src="Imagens/Maracuja.png" alt="Imagem 1">
+        <img class="imagemAleatoria" src="Imagens/Petit.png" alt="Imagem 2">
+        <img class="imagemAleatoria" src="Imagens/Maracuja.png" alt="Imagem 3">
+    </section>
+
+    <nav> 
+        <a href="#home">Home</a>
+        <a href="#historia">História</a>
+        <a href="#processos">Processo</a>
+        <a href="#sustentaveis">Sustentáveis</a>
+        <a href="#compra">Compre sua Cerveja</a>
+        <a href="#quem-somos">Quem Somos</a>
+        <a href="#game">Vamos Jogar?</a>
+    </nav>
+    
+    <section id="home">
+        <h2>Bem-vindo à Loulou Petit!</h2>
+        <div class="gallery1">
+        <img src="Imagens/Cerveja.jpeg">
+        </div>
+
+        <p><span style='font-family: "Comic Sans MS", sans-serif; font-size: 20px; text-shadow: rgb(255, 255, 255) 3px 5px 1px;'>Seja bem-vindo &agrave; nossa cervejaria, onde cada gole conta uma hist&oacute;ria de qualidade, paix&atilde;o e dedica&ccedil;&atilde;o. Aqui, estamos comprometidos em produzir cervejas excepcionais, cuidadosamente elaboradas em cada etapa do processo de fabrica&ccedil;&atilde;o.</span></p>
+    </section>
+
+    <section id="historia">
+        <h2>História da Cerveja com Adjutos</h2>
+        <p><span style='font-family: "Comic Sans MS", sans-serif; font-size: 20px; text-shadow: rgb(255, 255, 255) 3px 5px 1px;'>A cerveja de milho no Brasil tem ra&iacute;zes na chegada dos colonizadores portugueses e alemãs, que adaptaram a cerveja tradicional &agrave; abund&acirc;ncia de milho. Essa vers&atilde;o &uacute;nica logo se tornou uma parte essencial da cultura cervejeira brasileira, amada por seu sabor suave e cremoso. Hoje, &eacute; uma bebida celebrada em todo o pa&iacute;s, refletindo a paix&atilde;o dos brasileiros pela boa cerveja e pela inova&ccedil;&atilde;o culin&aacute;ria.</span></span></p>
+    </section>
+
+    <section id="processos">
+        <h2>Processo de Produção</h2>
+        <p><span style='font-family: "Comic Sans MS", sans-serif; font-size: 20px; text-shadow: rgb(255, 255, 255) 3px 5px 1px;'>Na nossa cervejaria, cada etapa do processo de fabrica&ccedil;&atilde;o &eacute; realizada com extremo cuidado e aten&ccedil;&atilde;o &agrave; higiene. Desde a sele&ccedil;&atilde;o dos melhores ingredientes at&eacute; o envase final, garantimos que todos os procedimentos sigam rigorosos padr&otilde;es de qualidade e seguran&ccedil;a.</span></p>
+      <div class="gallery">
+        <img src="Imagens/Cozinha1.jpeg">
+        <img src="Imagens/Cozinha2.jpeg">
+        <img src="Imagens/Cozinha3.jpeg">
+        <img src="Imagens/Cozinha4.jpeg">
+        <img src="Imagens/Cozinha5.jpeg">
+        <img src="Imagens/Cozinha6.jpeg">
+        <img src="Imagens/Cozinha7.jpeg">
+    </div>
+    </section>
+
+    <section id="sustentaveis">
+        <img src="Imagens/Susten.png" alt="Imagem de Iniciativas Sustentáveis">
+        <div>
+            <h2>Iniciativas Sustentáveis</h2>
+            <p><span style='font-family: "Comic Sans MS", sans-serif; font-size: 20px; text-shadow: rgb(255, 255, 255) 3px 5px 1px;'>O processo de produção da cerveja, nos deparamos com o mosto, composto por cevada e flocos de milho. Com o objetivo de reduzir qualquer forma de desperdício, decidimos utilizar o mosto como matéria-prima para o desenvolvimento de outros dois produtos, almejando assim fomentar práticas sustentáveis.</p>
+
+<p><br></p>
+
+
+ <p><span style='font-family: "Trebuchet MS", Helvetica, sans-serif; text-shadow: rgb(235, 163, 255) 4px 3px 1px; font-size: 20px;'><span style="background-color: rgb(255, 182, 193);">A   Primeira Proposta</span> consistiu na utiliza&ccedil;&atilde;o dos gr&atilde;os remanescentes no preparo de p&atilde;o caseiro. Esta estrat&eacute;gia &nbsp;n&atilde;o apenas contribui para a redu&ccedil;&atilde;o do desperd&iacute;cio, mas tamb&eacute;m melhora a qualidade e o sabor do p&atilde;o, beneficiando-se da fermenta&ccedil;&atilde;o promovida pelos 
+gr&atilde;os.</span></p>
+
+<p style="text-align: center;"><img src="Imagens/Pão.jpg" alt="Imagem de Iniciativas Sustentáveis">
+
+<p><span style='font-family: "Trebuchet MS", Helvetica, sans-serif; font-size: 20px; text-shadow: rgb(167, 253, 165) 3px 5px 1px;'><span style="background-color: rgb(26, 188, 156);">A Segunda Proposta</span> consistiu na produ&ccedil;&atilde;o de um esfoliante natural, utilizando tamb&eacute;m o mosto como base. Estes foram misturados com &oacute;leos essenciais, resultando em um produto de beleza que n&atilde;o apenas promove a sa&uacute;de da pele, mas tamb&eacute;m se alinha aos princ&iacute;pios da sustentabilidade.</span></p>
+
+<p style="text-align: center;"><img src="Imagens/Esfoliante.jpg" alt="Imagem de Iniciativas Sustentáveis">
+
+<p><span style='font-family: "Comic Sans MS", sans-serif; font-size: 20px; text-shadow: rgb(255, 255, 255) 3px 5px 1px;'>No futuro pr&oacute;ximo, nossa empresa est&aacute; planejando lan&ccedil;ar no mercado esses dois produtos inovadores que certamente ir&atilde;o cativar os consumidores o esfoliante corporal enriquecido com ingredientes naturais e revitalizantes, e um delicioso p&atilde;o de cevada, elaborado com os mais finos gr&atilde;os e cuidadosamente assado para proporcionar uma experi&ecirc;ncia gastron&ocirc;ncia &uacute;nica e saud&aacute;vel</p>
+
+
+
+</div>
+
+        </div>
+    </section>
+
+    <section id="compra" class="product">
+        <h2>Compre sua Cerveja</h2>
+        <img src="Imagens/Garrafa.avif" alt="Imagem de Compre sua Cerveja">
+        <p style="text-align: left;"><strong>Nome da Cerveja:</strong> Pilsen Ale de Maracuj&aacute;</p>
+<p style="text-align: left;"><strong>Estilo:</strong> Pilsen Ale de Frutas</p>
+<p style="text-align: left;"><strong>Teor Alco&oacute;lico:&nbsp;</strong>5% ABV (&aacute;lcool por volume)</p>
+<p style="text-align: left;"><strong>Amargor:</strong> Y IBU (unidades de amargor internacional)</p>
+<p style="text-align: left;"><strong>Ingredientes Principais:</strong> Malte de cevada, flocos de milho (40%), l&uacute;pulo, maracuj&aacute;, levedura.</p>
+<p style="text-align: left;"><br></p>
+<p style="text-align: left;"><strong>Descri&ccedil;&atilde;o</strong>:</p>
+<p style="text-align: left;">&nbsp; Ao servir, a Pilsen Ale de Maracuj&aacute; revela uma tonalidade dourada v&iacute;vida, brilhante como o sol tropical. Sua espuma &eacute; generosa e cremosa, convidando a mergulhar no aroma tropical que flutua sobre ela. O nariz &eacute; inundado com notas intensas de maracuj&aacute; fresco, transportando-o para uma planta&ccedil;&atilde;o ensolarada onde as frutas s&atilde;o colhidas no auge da matura&ccedil;&atilde;o.</p>
+<p style="text-align: left;">&nbsp; No primeiro gole, a do&ccedil;ura do maracuj&aacute; dan&ccedil;a em harmonia com a base de malte de cevada e milho, fornecendo uma sensa&ccedil;&atilde;o inicial de frescor frutado, seguida por uma suavidade sutil e cremosa. O milho adiciona uma profundidade ligeiramente adocicada, equilibrada pelo car&aacute;ter leve e refrescante do l&uacute;pulo, que se revela discretamente no final, deixando um suave amargor que convida o pr&oacute;ximo gole.</p>
+<p style="text-align: left;">&nbsp; A textura &eacute; delicadamente efervescente, com um corpo m&eacute;dio que sustenta os sabores sem ser pesado, tornando-a uma escolha perfeita para acompanhar um dia ensolarado na praia ou uma reuni&atilde;o descontra&iacute;da com amigos. A cada gole, a cerveja revela camadas adicionais de complexidade, enquanto o sabor vibrante do maracuj&aacute; continua a brilhar, convidando voc&ecirc; a explorar cada nuance desta cria&ccedil;&atilde;o artesanal.</p>
+<p style="text-align: left;"><br></p>
+<p style="text-align: left;"><strong>Harmoniza&ccedil;&atilde;o de Comida:</strong></p>
+<ul>
+    <li style="text-align: left;">Frutos do mar grelhados, como camar&otilde;es ou peixe branco</li>
+    <li style="text-align: left;">Saladas frescas com molhos c&iacute;tricos</li>
+    <li style="text-align: left;">Pratos leves da culin&aacute;ria asi&aacute;tica, como sushi ou curry tailand&ecirc;s</li>
+    <li style="text-align: left;">Sobremesas refrescantes, como sorvete de lim&atilde;o ou mousse de maracuj&aacute;</li>
+</ul>
+  <table style="width: 96%; background-color: rgb(0, 0, 0); border-collapse: collapse; margin-right: calc(4%);">
+    <tbody>
+        <tr>
+            <td style="width: 100%; background-color: rgb(209, 213, 216);">
+                <div style="text-align: center;"><span style='font-family: "Lucida Console", Monaco, monospace; color: rgb(255, 0, 127); font-size: 28px;'>Pre&ccedil;o: R$80,00 por garrafa</span></div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+        <p style="text-align: left;"><br></p>
+        <label for="cep"><span style="font-family: Impact, Charcoal, sans-serif;">CEP:</label>
+        <input type="text" id="cep" name="cep">
+        <button onclick="buscarEndereco()">Buscar Endereço</button>
+        <p id="endereco"></p> <!-- Elemento para mostrar o endereço -->
+        <label for="quantidade"><span style="font-family: Impact, Charcoal, sans-serif;">QUANTIDADE:</label>
+        <input type="number" id="quantidade" name="quantidade" value="1" min="1" oninput="calcularTotal()">
+        <button onclick="calcularTotal()">Calcular Total</button>
+        <p id="frete"></p> <!-- Elemento para mostrar o valor do frete -->
+        <p id="total"></p>
+    </section>
+
+    <section id="quem-somos">
+        <h2>Quem Somos</h2>
+        <div class="mission-vision-values">
+            <div class="rectangle">
+                <span style="color: rgb(255, 255, 255);"><i class="fas fa-bullseye"></i>
+                <h3>Missão</h3>
+                <p style="text-align: center;"><span style='font-family: "Trebuchet MS", Helvetica, sans-serif;'>Nossa miss&atilde;o &eacute; criar cervejas artesanais que contém hist&oacute;rias, que despertem sensa&ccedil;&otilde;es e que promovam momentos de prazer e conv&iacute;vio. Valorizamos a qualidade, a originalidade e a paix&atilde;o pela cerveja em tudo o que fazemos.</span></p>
+            </div>
+            <div class="rectangle">
+                <span style="color: rgb(255, 255, 255);"><i class="far fa-eye"></i>
+                <h3>Visão</h3>
+                <p style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style='font-family: "Trebuchet MS", Helvetica, sans-serif;'>Visualizamos um futuro onde as nossas cervejas artesanais sejam apreciadas em todo o mundo, conectando através atrav&eacute;s de experi&ecirc;ncias sensoriais &uacute;nicas e compartilhadas.</span></p>
+
+            </div>
+            <div class="rectangle">
+                <span style="color: rgb(255, 255, 255);"> <i class="fas fa-heart"></i>
+                <h3>Valores</h3>
+                <p style="text-align: center;"><span style="font-family: 'Trebuchet MS', Helvetica, sans-serif;">Agir com honestidade, transpar&ecirc;ncia e &eacute;tica em todas as intera&ccedil;&otilde;es comerciais, mantendo os mais altos padr&otilde;es de integridade e responsabilidade.</span></p>
+            </div>
+        </div>
+        <h2><p><span style="font-family: Impact, Charcoal, sans-serif; font-size: 28px;">Integrantes</span></p></h2>
+        <div class="socia-images">
+            <div class="socia">
+                <p style="text-align: center;"><img src="Imagens/Gi.png" alt="Sócia 1">
+                <p style="text-align: center;"><span style="font-family: Comic Sans MS, sans-serif;">Giovanna Hototian, 20 anos, desenvolvimento do  circuito eletr&ocirc;nico e l&iacute;der em otimização do uso de recursos financeiros e tesouraria.</span></p>
+            </div>
+            <div class="socia">
+                <p style="text-align: center;"><img src="Imagens/Isa.png" alt="Sócia 2">
+                <p style="text-align: center;"><span style='font-family: "Comic Sans MS", sans-serif;'>Isabelle Reginnette, 18 anos, respons&aacute;vel pelo desenvolvimento do aplicativo de jogo de tabuleiro sobre o processo cervejeiro da marca Petit Loulou, assim como pelo setor de pesquisa.</span></p>
+            </div>
+            <div class="socia">
+                <p style="text-align: center;"><img src="Imagens/Julya.png" alt="Sócia 3">
+                <p><span style="font-family: Comic Sans MS, sans-serif;">Julya Dias, 21 anos,</span></p>
+            </div>
+            <div class="socia">
+                <p style="text-align: center;"><img src="Imagens/Karol.png" alt="Sócia 4">
+                <p style="text-align: center;"><span style="font-family: Comic Sans MS, sans-serif;">Karolaine Helena, 21 anos, &eacute; a respons&aacute;vel pelo desenvolvimento do site da marca Petit Loulou, bem como pelo projeto eletr&ocirc;nico associado.</span></p>
+            </div>
+            <div class="socia">
+                <p style="text-align: center;"><img src="Imagens/Kimberlyt.png" alt="Sócia 5">
+                <p style="text-align: center;"><span style="font-family: Comic Sans MS, sans-serif;">Kimberly Germano, 19 anos, respons&aacute;vel pelo reaproveitamento sustent&aacute;vel dos res&iacute;duos de produ&ccedil;&atilde;o, bem como pelo setor de pesquisa.</span></p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <div class="redes-sociais">
+            <a href="url_da_sua_rede_social" class="social-icon"><i class="fab fa-facebook"></i></a> <!-- Ícone do Facebook -->
+            <a href="https://www.instagram.com/petitlouloubeer?igsh=MTcxdjFvOHlxN3d4dg%3D%3D" class="social-icon"><i class="fab fa-instagram"></i></a> <!-- Ícone do Instagram -->
+            <a href="url_da_sua_rede_social" class="social-icon"><i class="fab fa-twitter"></i></a> <!-- Ícone do Twitter -->
+            <a href="url_da_sua_rede_social" class="social-icon"><i class="fab fa-linkedin"></i></a> <!-- Ícone do LinkedIn -->
+            <!-- Adicione mais ícones conforme necessário para suas redes sociais -->
+        </div> 
+        <p>&copy; 2024 Loulou Petit. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script> <!-- Importa o script do FontAwesome -->
+    <script>
+           function openLinks() {
+            // Substitua estas URLs pelos links desejados
+            var url1 = "https://www.flippity.net/bg.php?k=11oEUEWkoyq-7lcUl_iNNtPMSvZTAOGPqJsFJWA2GMk0";
+            var url2 = "index (1).html";
+            
+            // Abre o primeiro link em uma nova aba
+            window.open(url1, '_blank');
+            // Abre o segundo link em uma nova aba
+            window.open(url2, '_blank');
+        }
+        // Esconde o rodapé quando a página é rolada para baixo
+        window.addEventListener("scroll", function() {
+            var footer = document.getElementById("footer");
+            if (window.scrollY > 100) { // Altere o valor conforme necessário
+                footer.classList.add("hide-footer");
+            } else {
+                footer.classList.remove("hide-footer");
+            }
+        });
+
+        // Função para buscar e exibir o endereço associado ao CEP
+        function buscarEndereco() {
+            var cep = document.getElementById("cep").value;
+            fetch(`https://viacep.com.br/ws/${cep}/json/`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.erro) {
+                    document.getElementById("endereco").innerText = "CEP não encontrado";
+                } else {
+                    document.getElementById("endereco").innerText = `Endereço: ${data.logradouro}, ${data.bairro}, ${data.localidade} - ${data.uf}`;
+                }
+            })
+            .catch(error => console.error('Erro ao buscar endereço:', error));
+        }
+
+        // Função para calcular o total
+        function calcularTotal() {
+            var quantidade = parseInt(document.getElementById("quantidade").value);
+            var precoUnitario = 80; // Preço unitário de R$80,00 por garrafa
+            var frete = 30; //Preço do frete
+            var total = (quantidade * precoUnitario) + frete;
+            document.getElementById("total").innerText = "Total: R$" + total.toFixed(2);
+            document.getElementById("frete").innerText = "Frete: R$" + frete.toFixed(2);
+        }
+    </script>
+  <section id="game">
+
+   <div class="container">
+        <h1>Acesse o Jogo</h1>
+        <p>Clique no botão abaixo para acessar os jogos.</p>
+        <button class="btn" onclick="openLinks()">Jogar Agora</button>
+    </div>
+</body>
+</html>
