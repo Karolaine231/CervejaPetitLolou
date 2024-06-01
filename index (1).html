@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Fluxo de Valor - Produção de Cerveja</title>
+    <style>
+        body {
+            font-family: Comic Sans MS, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #253c46;
+            color: white;
+        }
+        #game {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #5b2e35;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #game h1 {
+            color: white;
+            padding: 10px; /* Adiciona um pouco de espaçamento ao redor do texto */
+        }
+        #card-container {
+            margin: 20px 0;
+            font-size: 20px;
+        }
+        #buttons-container button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        #score-container {
+            margin-top: 20px;
+        }
+        #score-container p {
+            margin: 5px 0;
+        }
+        #final-score-container {
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="game">
+        <h1>Jogo Fluxo de Valor - Produção de Cerveja</h1>
+        <div id="card-container">
+            <p id="card-text">Clique no botão "Iniciar Jogo" para começar!</p>
+        </div>
+        <div id="buttons-container">
+            <button id="start-button">Iniciar Jogo</button>
+            <button id="add-value-button" disabled>Agrega Valor</button>
+            <button id="necessary-button" disabled>Necessário</button>
+            <button id="no-value-button" disabled>Não Agrega Valor</button>
+        </div>
+        <div id="score-container">
+            <p>Pontuação:</p>
+            <p>Agrega Valor: <span id="value-score">0</span></p>
+            <p>Necessário: <span id="necessary-score">0</span></p>
+            <p>Não Agrega Valor: <span id="no-value-score">0</span></p>
+        </div>
+        <div id="final-score-container">
+            <h2>Pontuação Final</h2>
+            <p>Total de Acertos: <span id="total-acertos">0</span></p>
+            <p>Total de Erros: <span id="total-erros">0</span></p>
+            <p>Processos que Não Agregam Valor: <span id="no-value-processes">0</span></p>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const processes = [
+                { text: "Seleção dos maltes", type: "value" },
+                { text: "Escolha e adição de ingredientes", type: "value" },
+                { text: "Controle de qualidade", type: "value" },
+                { text: "Envasamento da cerveja", type: "value" },
+                { text: "Seleção da escola cervejeira", type: "value" },
+                { text: "Fermentação controlada", type: "value" },
+                { text: "Escolha da utilização do scrap da cerveja", type: "value" },
+                { text: "Embalagem da cerveja", type: "value" },
+                { text: "Escolha do nome da cervejaria", type: "value" },
+                { text: "Filtração para remover os sedimentos indesejados e garantir a clareza da cerveja", type: "value" },
+                { text: "Moagem do Malte", type: "value" },
+                { text: "Ajuste de Cor", type: "value" },
+                { text: "Aromatização", type: "value" },
+                { text: "Pasteurização", type: "value" },
+                { text: "Adição de Lúpulo", type: "value" },
+                { text: "Fermentação Secundária", type: "value" },
+                { text: "Rotulagem", type: "value" },
+                { text: "Distribuição da cerveja", type: "value" },
+                { text: "Fervura do Mosto", type: "value" },
+                { text: "Carbonatação", type: "value" },
+
+
+                { text: "Limpeza dos equipamentos de produção", type: "necessary" },
+                { text: "Tratamento de água para remover impurezas", type: "necessary" },
+                { text: "Controle de temperatura  durante as fases do processo", type: "necessary" },
+                { text: "Manutenção preventiva de equipamentos", type: "necessary" },
+                { text: "Controle de estoque de insumos e  produtos acabados", type: "necessary" },
+                { text: "Auditorias Internas", type: "necessary" },
+                { text: "Cumprimento de requisitos  regulatórios e legais", type: "necessary" },
+                { text: "Logística e distribuição de transporte", type: "necessary" },
+                { text: "Gestão de relacionamento com os fornecedores", type: "necessary" },
+                { text: "Monitoramento e controle de Temperatura", type: "necessary" },
+                { text: "Gerenciamento de resíduos", type: "necessary" },
+                { text: "Controle de Inventário", type: "necessary" },
+                { text: "Monitoramento Ambiental", type: "necessary" },
+                { text: "Gestão de Projetos", type: "necessary" },
+                { text: "Otimização do uso de energia.", type: "necessary" },
+                { text: "Manutenção de registros de produção e controle de qualidade.", type: "necessary" },
+                { text: "Descarte adequado de resíduos sólidos e líquidos", type: "necessary" },
+                { text: "Identificação e mitigação de riscos operacionais.", type: "necessary" },
+                { text: "Conformidade com regulamentações e legislações.", type: "necessary" },
+                { text: "Preservação de malte, lúpulo e outros insumos.", type: "necessary" },
+
+
+                { text: "Tempo de espera entre os processos da fabricação da cerveja", type: "no-value" },
+                { text: "Falha ou quebra de Equipamentos", type: "no-value" },
+                { text: "Problema no índice de qualidade do produto", type: "no-value" },
+                { text: "Dosagem errada de ingredientes", type: "no-value" },
+                { text: "Má divisão das tarefas entre os grupos", type: "no-value" },
+                { text: "Falta de planejamento", type: "no-value" },
+                { text: "Desperdício de recursos", type: "no-value" },
+                { text: "Falhas de Comunicação", type: "no-value" },
+                { text: "Superprodução", type: "no-value" },
+                { text: "Sobrecarga de trabalho", type: "no-value" },
+                { text: "Tempo gasto em ajustes de máquinas.", type: "no-value" },
+                { text: "Retrabalho", type: "no-value" },
+                { text: "Processos Manuais Redundantes", type: "no-value" },
+                { text: "Tempo ocioso aguardando chegada de matérias-primas.", type: "no-value" },
+                { text: "Verificações redundantes que não agregam valor adicional.", type: "no-value" },
+                { text: "Variedade desnecessária em processos que poderiam ser uniformes.", type: "no-value" },
+                { text: "Registros e papeis que não são utilizados.", type: "no-value" },
+                { text: "Uso inadequado ou falta de manutenção nas ferramentas", type: "no-value" },
+                { text: "Disposição de equipamentos que causa movimentos desnecessários.", type: "no-value" },
+                { text: "Consumo de energia além do necessário.", type: "no-value" },
+            ];
+            let currentCardIndex = 0;
+            let score = {
+                value: 0,
+                necessary: 0,
+                noValue: 0
+            };
+            let errors = 0;
+            let noValueProcesses = 0;
+
+            const cardText = document.getElementById('card-text');
+            const startButton = document.getElementById('start-button');
+            const addValueButton = document.getElementById('add-value-button');
+            const necessaryButton = document.getElementById('necessary-button');
+            const noValueButton = document.getElementById('no-value-button');
+            const valueScore = document.getElementById('value-score');
+            const necessaryScore = document.getElementById('necessary-score');
+            const noValueScore = document.getElementById('no-value-score');
+            const finalScoreContainer = document.getElementById('final-score-container');
+            const totalAcertos = document.getElementById('total-acertos');
+            const totalErros = document.getElementById('total-erros');
+            const noValueProcessesScore = document.getElementById('no-value-processes');
+
+            function shuffle(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+            }
+
+            function startGame() {
+                shuffle(processes);
+                currentCardIndex = 0;
+                score = { value: 0, necessary: 0, noValue: 0 };
+                errors = 0;
+                noValueProcesses = 0;
+                updateScore();
+                showNextCard();
+                addValueButton.disabled = false;
+                necessaryButton.disabled = false;
+                noValueButton.disabled = false;
+                startButton.disabled = true;
+                finalScoreContainer.style.display = 'none';
+            }
+
+            function showNextCard() {
+                if (currentCardIndex < processes.length) {
+                    cardText.textContent = processes[currentCardIndex].text;
+                } else {
+                    endGame();
+                }
+            }
+
+            function endGame() {
+                cardText.textContent = "Jogo Terminado! Obrigado por jogar.";
+                addValueButton.disabled = true;
+                necessaryButton.disabled = true;
+                noValueButton.disabled = true;
+                startButton.disabled = false;
+                finalScoreContainer.style.display = 'block';
+                totalAcertos.textContent = score.value + score.necessary + score.noValue;
+                totalErros.textContent = errors;
+                noValueProcessesScore.textContent = noValueProcesses;
+            }
+
+            function handleButtonClick(type) {
+                const currentCard = processes[currentCardIndex];
+                if (currentCard.type === type) {
+                    score[type]++;
+                    if (type === 'noValue') {
+                        noValueProcesses++;
+                    }
+                } else {
+                    errors++;
+                }
+                currentCardIndex++;
+                updateScore();
+                showNextCard();
+            }
+
+            function updateScore() {
+                valueScore.textContent = score.value;
+                necessaryScore.textContent = score.necessary;
+                noValueScore.textContent = score.noValue;
+            }
+
+            startButton.addEventListener('click', startGame);
+            addValueButton.addEventListener('click', () => handleButtonClick('value'));
+            necessaryButton.addEventListener('click', () => handleButtonClick('necessary'));
+            noValueButton.addEventListener('click', () => handleButtonClick('noValue'));
+        });
+    </script>
+</body>
+</html>
