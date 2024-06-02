@@ -7,27 +7,38 @@
     <!-- Seu código CSS e links para o FontAwesome aqui -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Importa os ícones do FontAwesome -->
     <style>
-           .container {
-            text-align: center; /* Centraliza texto */
-            background-color: #fff; /* Cor de fundo branca */
-            padding: 20px; /* Espaçamento interno */
-            border-radius: 10px; /* Bordas arredondadas */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ao redor do container */
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
         }
-           .btn {
-            display: inline-block; /* Exibição em bloco inline */
-            padding: 10px 20px; /* Espaçamento interno do botão */
-            font-size: 16px; /* Tamanho da fonte */
-            color: #fff; /* Cor do texto */
-            background-color: #5b2e35; /* Cor de fundo do botão */ 
-            border: none; /* Remove borda */
-            border-radius: 5px; /* Bordas arredondadas */
-            text-decoration: none; /* Remove sublinhado */
-            cursor: pointer; /* Cursor de ponteiro ao passar sobre o botão */
-            transition: background-color 0.3s ease; /* Transição suave para mudança de cor */
+        .description {
+            margin-bottom: 20px;
         }
-           .btn:hover {
-            background-color: #000000; /* Cor de fundo ao passar o mouse */
+        .image-container {
+            margin-bottom: 20px;
+        }
+        .image-container img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-around;
+        }
+        .button-container a {
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #5b2e35;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .button-container a:hover {
+            background-color: #000000;
         }
         /* Estilos globais */
         body {
@@ -449,7 +460,7 @@ gr&atilde;os.</span></p>
             </div>
             <div class="socia">
                 <p style="text-align: center;"><img src="Imagens/Julya.png" alt="Sócia 3">
-                <p><span style="font-family: Comic Sans MS, sans-serif;">Julya Dias, 21 anos,</span></p>
+                <p><span style="font-family: Comic Sans MS, sans-serif;">Julya Dias, 21 anos, mestre cervejeira e líder de otimização de produção e responável pelo setor de pesquisa.</span></p>
             </div>
             <div class="socia">
                 <p style="text-align: center;"><img src="Imagens/Karol.png" alt="Sócia 4">
@@ -522,10 +533,32 @@ gr&atilde;os.</span></p>
     </script>
   <section id="game">
 
-   <div class="container">
-        <h1>Acesse o Jogo</h1>
-        <p>Clique no botão abaixo para acessar os jogos.</p>
-        <button class="btn" onclick="openLinks()">Jogar Agora</button>
+    <div class="container">
+        <div class="description">
+            <h1><p><span style="font-family: Impact, Charcoal, sans-serif; font-size: 28px; color: rgb(0, 0, 0);">Bem - vindo ao nosso Game Board</span></p></h1>
+            <p>O objetivo do jogo de tabuleiro &eacute; integrar conceitos de Tecnologia de Processos Industriais e de Servi&ccedil;os com o Projeto Cervejeiro 2024. O jogo possui 60 frases de <strong>Agrega Valor</strong>, <strong>N&atilde;o Agrega Valor</strong> e <strong>N&atilde;o Agrega Valor Mas &eacute; Necess&aacute;rio</strong>.</p>
+            <p><span style='font-family: "Comic Sans MS", sans-serif; font-size: 20px; text-shadow: rgb(255, 255, 255) 3px 5px 1px;'> Regras:</p>
+<ul>
+    <li>Para poder fazer seu pe&atilde;o andar, &eacute; necess&aacute;rio que voc&ecirc; acerte a frase.</li>
+    <li>M&iacute;nimo de pessoas para o game &eacute; 2 e o m&aacute;ximo &eacute; 8 pessoas.</li>
+    <li>Ser&aacute; nomeado vencedor aquele que chegar na casa 45.</li>
+    <li>Casas que possuem imagens diferentes, &eacute; necess&aacute;rio clicar no &iacute;cone de <strong>INTERROGA&Ccedil;&Atilde;O(!),&nbsp;</strong>e seguir o que se pede.</li>
+</ul>
+<p><span style='font-family: "Comic Sans MS", sans-serif; font-size: 20px; text-shadow: rgb(255, 255, 255) 3px 5px 1px;'>Dicas:&nbsp;</p>
+<ul>
+    <li>Para mover os pe&otilde;es e s&oacute; clicar com mouse e arrasta-los.</li>
+    <li>&Eacute; necess&aacute;rio ter as duas abas para poder jogar o jogo.</li>
+</ul>
+<p><span style='font-family: "Comic Sans MS", sans-serif; font-size: 20px; text-shadow: rgb(255, 255, 255) 3px 5px 1px;'>Divirta-se!!!!</p>
+<p><br></p>
+        </div>
+        <div class="image-container">
+            <img src="Imagens/Cartas.png" alt="Imagem do Jogo">
+        </div>
+        <div class="button-container">
+            <a href="https://www.flippity.net/bg.php?k=11oEUEWkoyq-7lcUl_iNNtPMSvZTAOGPqJsFJWA2GMk0" target="_blank">Ver Tabuleiro</a>
+            <a href="https://gamefluxodevalor.vercel.app" target="_blank">Ver Cartas</a>
+        </div>
     </div>
 </body>
 </html>
