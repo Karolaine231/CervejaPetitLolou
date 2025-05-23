@@ -3,6 +3,7 @@
 ## Descrição do Projeto
 
 Este projeto foi desenvolvido no terceiro semestre do curso de Engenharia da Computação com o objetivo de apresentar a marca da nossa cerveja artesanal, **Petit Loulou**. O projeto consistiu na criação de um site interativo com elementos de design modernos, foco em experiência do usuário, e a inclusão de dois minigames para engajar o público durante a apresentação do produto.
+Link: https://karol-phi.vercel.app/
 
 ## Funcionalidades
 
@@ -37,6 +38,7 @@ Foram incluídos dois minigames no site com fins de diversão e engajamento do p
 1. Clone ou baixe o repositório.
 2. Abra o arquivo `index.html` em um navegador moderno (recomenda-se Google Chrome ou Firefox).
 3. Explore as seções e interaja com os jogos disponíveis.
+Ou via link: https://karol-phi.vercel.app/
 
 ## Autores
 
